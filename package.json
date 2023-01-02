@@ -18,7 +18,7 @@
     "build": "tsup",
     "prepare": "husky install && chmod +x .husky/*",
     "format": "prettier --write --list-different .",
-    "release": "pnpm format && release-it"
+    "release": "pnpm format && pnpm build && release-it"
   },
   "lint-staged": {
     "**/src/**/*": [
