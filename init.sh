@@ -5,6 +5,8 @@ pnpm init
 pnpm add -D typescript @types/node tsup
 pnpm tsc --init
 
+echo "# $(basename $(pwd))" >>README.md
+
 mkdir src
 touch src/index.ts
 echo 'node_modules
