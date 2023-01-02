@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as fs from 'fs';
 import * as path from 'path';
 
-export class Picture {
+export class KsaPicture {
   // --------------------------------
   // scrape all KSA students profile images
   // https://keis.ksa.hs.kr/uploadfiles/SCTSTUDENTN/08-035.jpg
