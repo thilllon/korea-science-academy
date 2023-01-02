@@ -1,0 +1,13 @@
+{
+  "name": "ksa",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx index.ts"
+  },
+  "dependencies": {
+    "korea-science-academy": "link:../"
+  },
+  "devDependencies": {
+    "tsx": "^3.12.1"
+  }
+}
