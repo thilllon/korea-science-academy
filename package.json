@@ -1,0 +1,68 @@
+{
+  "name": "ksa",
+  "version": "1.0.0",
+  "description": "",
+  "packageManager": "pnpm@7.20.0",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "dev": "tsx src/index.ts",
+    "build:tsc": "tsc",
+    "build": "tsup",
+    "prepare": "husky install && chmod +x .husky/*",
+    "format": "prettier --write --list-different .",
+    "release": "pnpm format && pnpm lint && pnpm test && pnpm build && release-it"
+  },
+  "lint-staged": {
+    "**/src/**/*": [
+      "prettier -w -l"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": "true"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional",
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "axios": "^1.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@types/node": "^18.11.18",
+    "commitizen": "^4.2.6",
+    "commitlint": "^17.3.0",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "release-it": "^15.6.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4"
+  }
+}
