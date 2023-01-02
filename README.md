@@ -6,5 +6,5 @@
 import { KsaPicture } from 'korea-science-academy';
 
 const ksaPicture = new KsaPicture();
-ksaPicture.getKsaProfileImage();
+ksaPicture.getKsaProfileImage(8); // e.g., 8 => 08-xxx, 11 => 11-xxx
 ```
