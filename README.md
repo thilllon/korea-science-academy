@@ -13,8 +13,13 @@ ksaPicture.getKsaProfileImage(8); // e.g., 8 => 08-xxx, 11 => 11-xxx
 
 ```sh
 git clone https://github.com/thilllon/korea-science-academy.git ksa
-cd ./ksa/example
+
+cd ksa
 npm install -g pnpm
+pnpm install
+pnpm build
+
+cd example
 pnpm install
 pnpm dev
 ```
