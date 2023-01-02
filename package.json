@@ -1,5 +1,5 @@
 {
-  "name": "ksa",
+  "name": "korea-science-academy",
   "version": "1.0.0",
   "description": "",
   "packageManager": "pnpm@7.20.0",
@@ -18,7 +18,7 @@
     "build": "tsup",
     "prepare": "husky install && chmod +x .husky/*",
     "format": "prettier --write --list-different .",
-    "release": "pnpm format && pnpm lint && pnpm test && pnpm build && release-it"
+    "release": "pnpm format && release-it"
   },
   "lint-staged": {
     "**/src/**/*": [

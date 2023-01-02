@@ -1,1 +1,1 @@
-# ksa
+# Korea Science Academy
