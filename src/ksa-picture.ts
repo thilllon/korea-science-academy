@@ -1,6 +1,6 @@
 import axios from 'axios';
-import * as fs from 'fs';
-import * as path from 'path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
 
 export class KsaPicture {
   // --------------------------------
@@ -13,45 +13,47 @@ export class KsaPicture {
   }
 
   private saveFailure(year: string, tag: string) {
-    const failurePath = path.join(process.cwd(), `KSA${year}`, 'failure.txt');
-    if (fs.existsSync(failurePath)) {
-      const data = fs.readFileSync(failurePath);
+    const failurePath = join(process.cwd(), `KSA${year}`, 'failure.txt');
+    if (existsSync(failurePath)) {
+      const data = readFileSync(failurePath);
       const lines = data.toString().split('\r\n').join('\n').split('\n');
       if (lines.includes(tag)) {
         return;
       }
     }
-    fs.writeFileSync(failurePath, `${tag}\n`, { flag: 'a' });
+    writeFileSync(failurePath, `${tag}\n`, { flag: 'a' });
   }
 
   private async downloadImage(year: string, id: string) {
     const studentId = `${year}-${id}`;
     const url = `https://keis.ksa.hs.kr/uploadfiles/SCTSTUDENTN/${studentId}.jpg`;
-    const filePath = path.join(process.cwd(), `KSA${year}`, `${studentId}.jpg`);
+    const filePath = join(process.cwd(), `KSA${year}`, `${studentId}.jpg`);
     try {
-      if (fs.existsSync(filePath)) {
+      if (existsSync(filePath)) {
         return;
       }
       const response = await axios.get(url, { responseType: 'arraybuffer' });
-      const base64 = Buffer.from(response.data, 'binary').toString('base64');
-      fs.writeFileSync(filePath, base64, 'base64');
+      const base64Encoded = Buffer.from(response.data, 'binary').toString('base64');
+      writeFileSync(filePath, base64Encoded, 'base64');
     } catch (err) {
       this.saveFailure(year, studentId);
     }
   }
 
-  private clearFailure(year: string) {
-    const failurePath = path.join(process.cwd(), `KSA${year}`, 'failure.txt');
-    if (fs.existsSync(failurePath)) {
-      const data = fs.readFileSync(failurePath);
-      const lines = data.toString().split('\r\n').join('\n').split('\n');
-      const newLines = lines.sort().filter((line) => {
-        const imgPath = path.join(process.cwd(), `KSA${year}`, `${line}.jpg`);
-        return !fs.existsSync(imgPath);
-      });
-
-      fs.writeFileSync(failurePath, newLines.join('\n'), { flag: 'w' });
+  private removeFailure(year: string) {
+    const failurePath = join(process.cwd(), `KSA${year}`, 'failure.txt');
+    if (!existsSync(failurePath)) {
+      return [];
     }
+    const data = readFileSync(failurePath);
+    const lines = data.toString().split('\r\n').join('\n').split('\n');
+    const filtered = lines.sort().filter((line) => {
+      const imgPath = join(process.cwd(), `KSA${year}`, `${line}.jpg`);
+      return !existsSync(imgPath);
+    });
+
+    writeFileSync(failurePath, filtered.join('\n'), { flag: 'w' });
+    return filtered;
   }
 
   async getKsaProfileImage(yearNumber: number, sleepTime = 300) {
@@ -59,14 +61,14 @@ export class KsaPicture {
 
     for (let idNumber = 1; idNumber <= 144; idNumber++) {
       const id = String(idNumber).padStart(3, '0');
-      const folderPath = path.join(process.cwd(), `KSA${year}`);
-      if (!fs.existsSync(folderPath)) {
-        fs.mkdirSync(folderPath);
+      const folderPath = join(process.cwd(), `KSA${year}`);
+      if (!existsSync(folderPath)) {
+        mkdirSync(folderPath);
       }
       await this.downloadImage(year, id);
       await this.sleep(sleepTime);
     }
     await this.sleep(sleepTime);
-    this.clearFailure(year);
+    this.removeFailure(year);
   }
 }
