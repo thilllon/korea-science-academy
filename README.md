@@ -6,7 +6,7 @@
 import { Ksa } from 'korea-science-academy';
 
 const ksa = new Ksa();
-ksa.students.image.get({ id: '08-100' }); // e.g., 8 => 08-xxx, 11 => 11-xxx
+ksa.students.image.downloadAll({ year: 20 }); // download all student images for `20-xxx`
 ```
 
 ## Quick start
