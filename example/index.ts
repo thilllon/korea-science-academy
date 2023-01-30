@@ -1,4 +1,4 @@
-import { KsaPicture } from 'korea-science-academy';
+import { Ksa } from '../src/ksa';
 
-const ksaPicture = new KsaPicture();
-ksaPicture.getKsaProfileImage(10);
+const ksa = new Ksa();
+ksa.students.image.downloadAll({ year: 20 });

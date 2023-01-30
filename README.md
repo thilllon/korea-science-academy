@@ -3,10 +3,10 @@
 ## Basic usage
 
 ```ts
-import { KsaPicture } from 'korea-science-academy';
+import { Ksa } from 'korea-science-academy';
 
-const ksaPicture = new KsaPicture();
-ksaPicture.getKsaProfileImage(8); // e.g., 8 => 08-xxx, 11 => 11-xxx
+const ksa = new Ksa();
+ksa.students.image.get({ id: '08-100' }); // e.g., 8 => 08-xxx, 11 => 11-xxx
 ```
 
 ## Quick start
