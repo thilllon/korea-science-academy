@@ -1,5 +1,7 @@
 # Korea Science Academy
 
+Utitlity library for KSA students
+
 ## Basic usage
 
 ```ts
