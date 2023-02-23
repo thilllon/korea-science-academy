@@ -1,4 +1,4 @@
-import { StudentImage } from './student-image';
+import { KsaStudentImage } from './ksa-student-image';
 import { Student } from './ksa.interface';
 
 export class Ksa {
@@ -6,14 +6,7 @@ export class Ksa {
 
   constructor() {
     this.students = {
-      image: new StudentImage(),
+      image: new KsaStudentImage(),
     };
   }
 }
-
-import release from 'release-it';
-
-release(options).then((output) => {
-  console.log(output);
-  // { version, latestVersion, name, changelog }
-});

@@ -1,1 +1,1 @@
-export * from './student-image';
+export * from './ksa-student-image';
