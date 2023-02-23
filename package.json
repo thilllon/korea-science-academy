@@ -3,7 +3,10 @@
   "version": "1.0.7",
   "description": "",
   "packageManager": "pnpm@7.20.0",
-  "keywords": [],
+  "keywords": [
+    "korea science academy",
+    "ksa"
+  ],
   "author": {
     "name": "thilllon",
     "email": "thilllon970@gmail.com"
@@ -22,41 +25,13 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "husky install && chmod +x .husky/*",
     "test": "jest",
-    "dev": "tsx src/index.ts",
+    "dev": "tsx ./src/index.ts",
     "build:tsc": "tsc",
     "build": "tsup",
-    "prepare": "husky install && chmod +x .husky/*",
-    "format": "prettier --write --list-different .",
+    "format": "prettier -w -l .",
     "release": "pnpm format && pnpm build && release-it"
-  },
-  "lint-staged": {
-    "**/src/**/*": [
-      "prettier -w -l"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v${version}"
-    },
-    "github": {
-      "release": "true"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional",
-      "@commitlint/config-conventional"
-    ]
-  },
-  "prettier": {
-    "printWidth": 120,
-    "singleQuote": true
   },
   "dependencies": {
     "axios": "^1.2.2",
@@ -76,6 +51,7 @@
     "release-it": "^15.6.0",
     "ts-jest": "^29.0.5",
     "tsup": "^6.5.0",
+    "tsx": "^3.12.3",
     "typescript": "^4.9.4"
   }
 }
