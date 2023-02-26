@@ -80,8 +80,11 @@ export class KsaStudentImage implements IKsaStudentImage {
     return downloadedList;
   }
 
-  private async sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  /**
+   * @param delay delay in milliseconds
+   */
+  private async sleep(delay: number) {
+    return new Promise((resolve) => setTimeout(resolve, delay));
   }
 
   private saveFailed(year: string, studentId: string) {
