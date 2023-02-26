@@ -4,6 +4,7 @@
   },
   "github": {
     "release": true,
+    "push": true,
     "releaseName": "Release ${version}",
     "releaseNotes": null,
     "autoGenerate": true,
