@@ -28,6 +28,6 @@ export interface DownloadAllArg {
 
 export interface IKsaStudentImage {
   getUrl(studentId: string): string;
-  download({ studentId }: DownloadArg): Promise<string | undefined>;
-  downloadAll({ year, delay: sleepInMs }: DownloadAllArg): Promise<string[]>;
+  download(arg: DownloadArg): Promise<string | undefined>;
+  downloadAll(arg: DownloadAllArg): Promise<string[]>;
 }

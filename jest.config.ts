@@ -11,7 +11,6 @@ const config: Config = {
   // testPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   // --detectOpenHandles
   detectOpenHandles: true,
-  
 };
 
 export default config;
