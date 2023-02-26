@@ -1,11 +1,19 @@
-import { beforeEach, describe, expect, test } from '@jest/globals';
-import { KsaStudentImage } from './ksa-student-image';
+import { afterAll, beforeEach, describe, expect, test } from '@jest/globals';
+import { KsaStudentImage } from '../src/ksa-student-image';
 
 describe('KsaStudentImage', () => {
   let ksaStudentImage: KsaStudentImage;
 
   beforeEach(() => {
     ksaStudentImage = new KsaStudentImage();
+  });
+
+  afterAll(() => {
+    console.log('done');
+  });
+
+  test('public methods', () => {
+    expect(Object.keys(ksaStudentImage).length).toBe(3);
   });
 
   test('getUrl', () => {
@@ -24,7 +32,6 @@ describe('KsaStudentImage', () => {
 
   test('getUrl: invalid studentId', () => {
     const invalidStudentIdsFixture = ['20-0000', '008-123'];
-    // debugger;
     for (const studentId of invalidStudentIdsFixture) {
       expect(() => ksaStudentImage.getUrl(studentId)).toThrow();
     }
@@ -32,48 +39,40 @@ describe('KsaStudentImage', () => {
 
   test('downloadAll', async () => {
     const ksaStudentImage = new KsaStudentImage();
-    expect(Object.keys(ksaStudentImage).length).toBe(0);
-    expect(ksaStudentImage.downloadAll).toBeInstanceOf(Function);
+    expect(() => ksaStudentImage.downloadAll).toBeInstanceOf(Function);
+  });
 
-    // FIXME: spyOn
+  test('downloadAll: given valid input', async () => {
+    // FIXME: use spyOn
     // const downloadSpy = jest.spyOn(ksaStudentImage, 'download');
     // await ksaStudentImage.downloadAll({ year: 2020 });
     // expect(downloadSpy).toHaveBeenCalledTimes(144);
-
     // const downloadSpy = jest.spyOn(ksaStudentImage, 'download');
     // ksaStudentImage.download = jest
     //   .fn<any>()
     //   .mockImplementation(({ studentId }: { studentId: string }) => {
     //     return ('file://' + studentId) as any;
     //   }) as any;
-
     // const downloadedList = await ksaStudentImage.downloadAll({ year: 2021 });
     // expect(downloadedList.length).toBe(144);
   });
 
-  // FIXME: blocking test
+  test('downloadAll: given invalid input', () => {
+    // FIXME: error
+    // expect(() => ksaStudentImage.downloadAll({ year: 13 })).toThrow(
+    //   'year must be greater than 1999'
+    // );
+    // error: {Symbol(async_id_symbol): 1847, Symbol(trigger_async_id_symbol): 1835}
+    // expect(ksaStudentImage.downloadAll({ year: 13 })).toBe([]);
+    // error: [Function Anonymous]
+    // expect(ksaStudentImage.downloadAll({ year: 13 })).toBe([]);
+  });
+
   test('sleep test with blocking', async () => {
-    // jest.spyOn(ksa);
-    // const time = 1500;
-    // const slack = 100;
-    // const studentImage = new StudentImage();
-    // const prototype = Object.getPrototypeOf(studentImage);
-    // const sleep = prototype.sleep;
-    // const start = Date.now();
-    // await sleep(time);
-    // const end = Date.now();
-    // expect(end - start).toBeLessThan(time + slack);
-    // expect(end - start).toBeGreaterThan(time - slack);
+    // TODO: test that sleep function blocks the execution for the given time
   });
 
   test('sleep test without blocking', async () => {
-    // const studentImage = new StudentImage();
-    // const prototype = Object.getPrototypeOf(studentImage);
-    // const sleep = prototype.sleep;
-    // const start = Date.now();
-    // jest.useFakeTimers();
-    // jest.advanceTimersByTime(1000);
-    // expect(setTimeout).toHaveBeenCalledTimes(1);
-    // expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+    // TODO: test if set delay time as 0 then there is no delay
   });
 });

@@ -15,6 +15,7 @@ specifiers:
   lint-staged: ^13.1.0
   prettier: ^2.8.1
   release-it: ^15.6.0
+  rxjs: ^7.8.0
   ts-jest: ^29.0.5
   tsup: ^6.5.0
   tsx: ^3.12.3
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   axios: 1.2.2
+  rxjs: 7.8.0
   zod: 3.20.2
 
 devDependencies:
@@ -5711,7 +5713,6 @@ packages:
     resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
       tslib: 2.4.1
-    dev: true
 
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
@@ -6233,7 +6234,6 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: true
 
   /tsup/6.5.0_acjq6tqfw64kdwj3e4yas4jrpq:
     resolution: {integrity: sha512-36u82r7rYqRHFkD15R20Cd4ercPkbYmuvRkz3Q1LCm5BsiFNUgpo36zbjVhCOgvjyxNBWNKHsaD5Rl8SykfzNA==}

@@ -5,9 +5,9 @@
     "dev": "tsx index.ts"
   },
   "dependencies": {
-    "korea-science-academy": "link:../"
+    "korea-science-academy": "link:.."
   },
   "devDependencies": {
-    "tsx": "^3.12.1"
+    "tsx": "^3.12.3"
   }
 }

@@ -4,14 +4,30 @@ export interface Student {
   image: KsaStudentImage;
 }
 
+export interface DownloadArg {
+  /**
+   * student ID e.g., 08-035
+   */
+  studentId: string;
+}
+
 export interface DownloadAllArg {
+  /**
+   * year of entrance. e.g., '2011', '2012', '2013', ...
+   */
   year: number;
-  sleepInMs?: number;
-  numOfStudents?: number;
+  /**
+   * sleep time in milliseconds. Default: 300
+   */
+  delay?: number;
+  /**
+   * number of students in a year. Default: 144
+   */
+  total?: number;
 }
 
 export interface IKsaStudentImage {
   getUrl(studentId: string): string;
-  download({ studentId }: { studentId: string }): Promise<string | undefined>;
-  downloadAll({ year, sleepInMs }: DownloadAllArg): Promise<string[]>;
+  download({ studentId }: DownloadArg): Promise<string | undefined>;
+  downloadAll({ year, delay: sleepInMs }: DownloadAllArg): Promise<string[]>;
 }
