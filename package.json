@@ -1,8 +1,11 @@
 {
   "name": "korea-science-academy",
-  "version": "1.1.1",
   "description": "",
-  "packageManager": "pnpm@7.20.0",
+  "version": "1.1.1",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "korea science academy",
     "ksa"
@@ -18,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/thlllon/korea-science-academy/issues/new"
   },
-  "license": "MIT",
+  "packageManager": "pnpm@7.20.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
